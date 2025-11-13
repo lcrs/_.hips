@@ -70,7 +70,7 @@ Cheap trick to make meshes squish away from each other when in contact without a
 https://github.com/user-attachments/assets/084022c2-775c-4e59-994a-e58003d28d1f
 
 
-#### [Ls_TerrainFromContours_v01.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_TerrainFromContours_v01.hipnc)
+#### [Ls_TerrainFromContours_v02.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_TerrainFromContours_v02.hipnc)
 Creates a smooth terrain from contour lines using thin plate spline interpolation, adapted from the RBF blendshape example in the Linear Solver SOP help page:
 
 <img width="2560" height="1600" alt="Ls_TerrainFromContours_v01" src="https://github.com/user-attachments/assets/765c99a6-6ef5-4f7a-ac75-bfa5d35cffa6" />
