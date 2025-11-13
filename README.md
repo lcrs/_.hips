@@ -16,6 +16,12 @@ Using OpenCL global atomic add tricks to render a buffer of point positions as s
 https://github.com/user-attachments/assets/30609454-98d0-46a3-883d-81831ba6363e
 
 
+#### [Ls_Cop3LUTfromImage_v02](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_Cop3LUTfromImage_v02)
+There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (which is CPU-only) but if you encode one in an image you can do a reasonable job with OpenCL:
+
+<img width="1920" height="1080" alt="Ls_Cop3LUTfromImage_v01" src="https://github.com/user-attachments/assets/5df6ecc2-5160-4cb2-946d-09308966cc55" />
+
+
 #### [Ls_Cop3PrefixsumGlow.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_Cop3PrefixsumGlow.hipnc)
 The Prefix Sum COP makes summed area tables that let you do box filters of any size pretty much instantly, so you can add up tons of them to approximate the non-separable kernels of exponential or fibonacci glows (which look uncomfortably like having smudged glasses if you get the shape just right):
 
@@ -38,12 +44,6 @@ Probably the best we can do in 21.0 to render PNGs from Karma with an OCIO view 
 You can sorta render a sunset using a uniform volume on a sphere as big as the entire earth with a geo-referenced DEM terrain, letting the atmosphere both scatter and absorb the same colour so the sky gradient from the low-angle sun appears naturally:
 
 <img width="1985" height="857" alt="Ls_KarmaSunset_v01" src="https://github.com/user-attachments/assets/34b49392-95c7-40c3-aed7-08908b59b9fe" />
-
-
-#### [Ls_Cop3LUTfromImage_v02](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_Cop3LUTfromImage_v02)
-There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (which is CPU-only), but if you encode one in an image you can do a reasonable job with OpenCL:
-
-<img width="1920" height="1080" alt="Ls_Cop3LUTfromImage_v01" src="https://github.com/user-attachments/assets/5df6ecc2-5160-4cb2-946d-09308966cc55" />
 
 
 #### [Ls_MatrixFromChart_v01b.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_MatrixFromChart_v01b.hipnc)
