@@ -70,4 +70,22 @@ Cheap trick to make meshes squish away from each other when in contact without a
 https://github.com/user-attachments/assets/084022c2-775c-4e59-994a-e58003d28d1f
 
 
+#### [Ls_TerrainFromContours_v01.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_TerrainFromContours_v01.hipnc)
+Creates a smooth terrain from contour lines using thin plate spline interpolation, adapted from the RBF blendshape example in the Linear Solver SOP help page:
+
+<img width="2560" height="1600" alt="Ls_TerrainFromContours_v01" src="https://github.com/user-attachments/assets/765c99a6-6ef5-4f7a-ac75-bfa5d35cffa6" />
+
+
+#### [Ls_TurbulenceQ_v01.hipnc](https://github.com/lcrs/_.hips/raw/refs/heads/main/Ls_TurbulenceQ_v01.hipnc)
+Extracts the Q-criterion isosurface beloved by aerospace CFD people from a smoke or pyro sim (it's the difference between the squared frobenius norms of the symmetric and anti-symmetric parts of the velocity gradient tensor, see https://www.m4-engineering.com/q-criterion-for-vortex-visualization):
+
+https://github.com/user-attachments/assets/445e0c6c-a4eb-4907-9ef0-1cb60870c3ee
+
+
+
+
+
+
 Everything else in here I have zero memory of don't @ me 🤍 lewis.saunders@gmail.com
+
+(Older stuff might be on https://lewisinthelandofmachines.tumblr.com)
