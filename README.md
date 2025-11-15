@@ -212,6 +212,11 @@ ndcv *= set(res.x, res.y, 0.0);
 \$mv = ndcv;
 ```
 
+#### [Ls_OpenCLMaskVDB.hipnc](./Ls_OpenCLMaskVDB.hipnc)
+Using OpenCL to multiply the density of one volume by another, like using VDB Combine set to "Multiply":
+
+<img width="1919" height="919" alt="Ls_OpenCLMaskVDB" src="https://github.com/user-attachments/assets/6883906a-7aa3-4cfa-9c0d-8062cc762581" />
+
 #### [Ls_PackedGeoRayCull.hipnc](./Ls_PackedGeoRayCull.hipnc)
 Culls packed prims based on the Ray SOP. The sphere rays out in every direction, records hitprim from the packed geo, then `findattribvalcount()` checks if each piece of packed geo had a hit recorded:
 
