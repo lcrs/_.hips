@@ -119,6 +119,11 @@ Extracts a best-fit 3x3 matrix from two Macbeth chart images similarly to mmColo
 
 <img width="2560" height="1487" alt="Ls_MatrixFromChart_v01" src="https://github.com/user-attachments/assets/1a30e0f6-d35c-478f-86aa-d5a005937645" />
 
+#### [Ls_MatrixInterp_v01.hiplc](./Ls_MatrixInterp_v01.hiplc)
+Interpolating between two matrix attributes using `slerp()`:
+
+<img width="1919" height="919" alt="Ls_MatrixInterp_v01" src="https://github.com/user-attachments/assets/e44d1f4b-f240-4d20-8ebe-d88a2ff799f8" />
+
 #### [Ls_MeshDivergence.hipnc](./Ls_MeshDivergence.hipnc)
 The Measure node can compute the gradient of an attribute, but the divergence in cartesian coordinates is harder to compute. This HIP compares the gradient sum to Jake Rice's method:
 
