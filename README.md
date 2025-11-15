@@ -213,6 +213,11 @@ Cheap trick to make meshes squish away from each other when in contact without a
 
 https://github.com/user-attachments/assets/084022c2-775c-4e59-994a-e58003d28d1f
 
+#### [Ls_Skeletonize_v01.hiplc](./Ls_Skeletonize_v01.hiplc)
+Generates a 2D straight skeleton by advecting points toward the SDF center, similar to [Labs Straight Skeleton 2D](https://www.sidefx.com/docs/houdini/nodes/sop/labs--straight_skeleton_2D.html):
+
+<img width="1918" height="916" alt="Ls_Skeletonize_v01" src="https://github.com/user-attachments/assets/f0a97a45-bd10-48bb-9bfa-b9f4b0efc421" />
+
 #### [Ls_TerrainFromContours_v02.hipnc](./Ls_TerrainFromContours_v02.hipnc)
 Creates a smooth terrain from contour lines using thin plate spline interpolation, adapted from the RBF blendshape example in the Linear Solver SOP help page:
 
