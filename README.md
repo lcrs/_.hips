@@ -65,6 +65,11 @@ Demo of a velocity bug in DOPs. When velocity sampling is set to streak, velocit
 
 https://github.com/user-attachments/assets/fa8a503c-6572-434b-8d7a-85df603bcb7a
 
+#### [Ls_HairgenFromLines_v03.hiplc](./Ls_HairgenFromLines_v03.hiplc)
+Using hairgen to create geo at render time from guide hairs which are just SOPs lines, with random variation done inside the hairgen:
+
+<img width="2560" height="1600" alt="Ls_HairgenFromLines_v03" src="https://github.com/user-attachments/assets/eb9b10c7-639a-4515-838a-048e0761be55" />
+
 #### [Ls_KarmaMandelbulb](./Ls_KarmaMandelbulb)
 The HDK comes with a Karma procedural that renders a mandelbulb in VEX without having to create any geometry (sadly it crashes as soon as you change any of the parameters in 20.5.361 unless you switch the renderer from Karma CPU to something else and then back again):
 
