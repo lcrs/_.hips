@@ -25,6 +25,31 @@ Using OpenCL global atomic add tricks to render a buffer of point positions as s
 
 https://github.com/user-attachments/assets/30609454-98d0-46a3-883d-81831ba6363e
 
+```js
+#bind layer src read
+#bind layer dummy write opt
+#bind layer dst write
+
+// https://violetspace.github.io/blog/atomic-float-addition-in-opencl.html
+inline void atomic_add_f(volatile __global float* addr, const float val) {
+    #if defined(cl_nv_pragma_unroll)
+            float ret; asm volatile("atom.global.add.f32 %0,[%1],%2;":"=f"(ret):"l"(addr),"f"(val):"memory");
+    #elif defined(__opencl_c_ext_fp32_global_atomic_add)
+            atomic_fetch_add_explicit((volatile global atomic_float*)addr, val, memory_order_relaxed);
+    #elif __has_builtin(__builtin_amdgcn_global_atomic_fadd_f32)
+            __builtin_amdgcn_global_atomic_fadd_f32(addr, val);
+    #else
+            float old = val; while((old=atomic_xchg(addr, atomic_xchg(addr, 0.0f)+old))!=0.0f);
+    #endif
+}
+
+@KERNEL {
+    int2 xy = convert_int2(@src.xy * @dst.res);
+    int idx = _linearIndex(@dst.stat, xy);
+    atomic_add_f((global float *)_bound_dst + idx, 0.01);  
+}
+```
+
 #### [Ls_Cop3Cooking.hipnc](./Ls_Cop3Cooking.hipnc)
 Slow apex graph cooking behaviour in COPs, possibly due to preview image generation. How can 3 blurs which must be hundreds of instructions run faster than what should be 3 mults and 3 adds plus some copying? Using invoke to run the same block is faster, even with enable compiling turned off:
 
@@ -58,6 +83,28 @@ Binding a `3@matrix` attribute into OpenCL using `float9`, then loading it with 
 The Prefix Sum COP makes summed area tables that let you do box filters of any size pretty much instantly, so you can add up tons of them to approximate the non-separable kernels of exponential or fibonacci glows (which look uncomfortably like having smudged glasses if you get the shape just right):
 
 <img width="2560" height="1600" alt="Ls_Cop3PrefixsumGlow" src="https://github.com/user-attachments/assets/495ac1de-7cc3-4653-bac4-3b99bbbf24ef" />
+
+```js
+#bind layer src
+#bind layer psum
+#bind layer !&dst
+#bind parm size float
+#bind parm shape float
+#bind parm layers int
+
+@KERNEL {
+    float w = @size / 20;
+    float4 acc = 0.0;
+    for(int i = 0; i < @layers; i++) {
+        // https://en.wikipedia.org/wiki/Summed-area_table
+        acc += (@psum(@P + (float2)(w, w)) + @psum(@P + (float2)(-w, -w)) - @psum(@P + (float2)(-w, w)) - @psum(@P + (float2)(w, -w)))
+               / (float4)(2 * w * @res.x * w * @res.y);
+        w *= 1 + @shape;
+    }
+
+    @dst.set(@src + acc / (float4)@layers);
+}
+```
 
 #### [Ls_Cop3Tile_v01.hipnc](./Ls_Cop3Tile_v01.hipnc)
 The Smooth Fill COP can be used for seamless edge blending, useful for tiled textures:
