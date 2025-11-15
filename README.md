@@ -156,6 +156,14 @@ Pruning primitives outside of an SDF VDB in LOPs. Sample your SOP VDB at the cen
 
 <img width="2672" height="1629" alt="Ls_LOPsFrustrumClipMaybe_v01" src="https://github.com/user-attachments/assets/51e6005d-0eb4-4277-b875-925b3015c006" />
 
+```js
+vector center = usd_getbbox_center(0, @primpath, @primpurpose);
+float sdf = volumesample('op:/stage/sdf/frustrum/FrustrumVDB', 0, center);
+if(sdf > 0.0) {
+    usd_setactive(0, @primpath, 0);
+}
+```
+
 #### [Ls_MantraShadowMask_v01.hipnc](./Ls_MantraShadowMask_v01.hipnc)
 Making a shadow map by grabbing the direct shadow AOV from the PBR Lighting VOP, then slipping it into a multiply of Ce before adding to the main lighting result. This way you get a soft shadow mask even from texture displacement:
 
