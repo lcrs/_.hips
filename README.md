@@ -183,6 +183,11 @@ ndcv *= set(res.x, res.y, 0.0);
 \$mv = ndcv;
 ```
 
+#### [Ls_PopTrails_v01.hipnc](./Ls_PopTrails_v01.hipnc)
+Particle trail using a Trail SOP followed by an Add SOP set to connect points with a matching ID attribute.
+
+<img width="1189" height="812" alt="Ls_PopTrails_v01" src="https://github.com/user-attachments/assets/471ba3fe-98ba-48c2-8b4a-be9da376f3a9" />
+
 #### [Ls_Ramprefine_v01.hiplc](./Ls_Ramprefine_v01.hiplc)
 Simplifying colour ramps that have way too many points by treating them as 3D paths in RGB space:
 
