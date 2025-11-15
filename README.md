@@ -95,12 +95,70 @@ Extracts a best-fit 3x3 matrix from two Macbeth chart images similarly to mmColo
 
 <img width="2560" height="1487" alt="Ls_MatrixFromChart_v01" src="https://github.com/user-attachments/assets/1a30e0f6-d35c-478f-86aa-d5a005937645" />
 
+#### [Ls_MeshDivergence.hipnc](./Ls_MeshDivergence.hipnc)
+The Measure node can compute the gradient of an attribute, but the divergence in cartesian coordinates is harder to compute. This HIP compares the gradient sum to Jake Rice's method:
+
+<img width="2672" height="1629" alt="Ls_MeshDivergence" src="https://github.com/user-attachments/assets/f59848c7-838c-4676-a64f-a2adfc467d69" />
+
+Jake Rice notes:
+
+> The divergence of a vector field on the surface is not the same as the laplacian of that vector field. If you want the divergence of the gradient of a scalar field, then the laplacian option on the neasure SOP does work. But if you just want the actual divergence of an arbitrary vector field, you'd have to write the math yourself I believe.
+>
+> Divergence on discrete surfaces is a troublesome idea, and it's not as simple as summing the components of the gradients of the vector field. The way you compute divergence depends on what element the vector field is discretized on. The easiest form I know is when your vector field is described on faces. It requires you have a div attribute set to 0 on your points:
+
+```js
+vector edge (int h) {
+    return vector(point(0, "P", hedge_dstpoint(0, h))) - vector(point(0, "P", hedge_srcpoint(0, h)));
+}
+
+float cot_weight (int h) {
+    int next = hedge_next(0, h);
+    int prev = hedge_next(0, next);
+    vector e1 = -normalize(edge(next));
+    vector e2 = normalize(edge(prev));
+    return dot(e1, e2) / (length(cross(e1, e2)) + 1e-8);
+}
+
+int h = primhedge(0, @primnum);
+int temp = h;
+vector field = prim(0, chs("YOUR_VECTOR_FIELD_HERE"), @primnum);
+
+do {
+    int src = hedge_srcpoint(0, h);
+    int prev = hedge_prev(0, h);
+    
+    float e1_ang = cot_weight(h); //angle opposite the edge
+    float e2_ang = cot_weight(prev);//angle opposite the prev
+    
+    float div_at_src = e1_ang * dot(edge(h), field) + e2_ang * dot(-edge(prev), field);
+    setpointattrib(0, "div", src,  div_at_src * .5, "add");
+
+    h = hedge_next(0, h);
+} while (h != temp);
+```
+
+More Jake notes:
+
+> Divergence of a vector field on prims results in values on points. To explain requires a large amount of discrete differential geometry, you'd have to watch [Keenan Crane's lectures](https://www.youtube.com/watch?v=8JCR6z3GLVI).
+>
+> Divergence corresponds with the inflow and outflow of values from a region of space. To take the divergence of your field on a surface, you need to do it with respect to the "basis directions" of that geometry. In this case it's somewhat defined by the edge vectors of a given prim.
+>
+> In the world of differential geo, the vector field defined on faces is described as a "discrete 1-form", which is actually scalars on edges. Any vector tangent to the face of a triangle can be composed by taking a weighted sum of the edge vectors of that triangle. 
+>
+> There are operators called "exterior derivatives", ways of interpolating values from points to edges and then to faces (in the case of triangle meshes). Then there are duals, which let you interpolate values from faces to edges and to points by working on the dual mesh instead. To be clear you can only really go from points to faces, but since you work on the dual mesh, a face in our original mesh is a dual point in the dual mesh. The hodge star operator lets you switch from points to dual faces, or edges to dual edges, etc.
+>
+> The way you compute the divergence of a field is by starting with a vector field (values per edge, or vectors on faces). Then you apply this set of operations `* d *` where `*` is the hodge star and `d` is the exterior derivative. We start with a 1 form, and as we apply the operators in order we end up with a 0 form, and the divergence of our original field.
+
+| 1 form | --> | --> | 0 form |
+| --- | --- | --- | --- |
+| <img src="https://github.com/user-attachments/assets/af6bc34b-5ebe-4ac9-a74f-29199ee9aa08" /> | <img src="https://github.com/user-attachments/assets/9039eaa8-bbe0-4314-b720-aaa47021bae6" /> | <img src="https://github.com/user-attachments/assets/bb6ae6c4-a0fd-4e53-af19-142229604068" /> | <img src="https://github.com/user-attachments/assets/481f5e09-ce9c-41bd-bbe1-9d16243cd368" /> |
+
 #### [Ls_MotionVectors_v01.hip](./Ls_MotionVectors_v01.hip)
 Inline code snippet to output 2D motion vectors in absolute pixels, for 2D vector blur in comp. Works on both geometry and volumes, as seen in [Ls_VolumeMotionVectors](#ls_volumemotionvectors_v01hipnc--ls_volumemotionvectorsnodes_v01hipnc):
 
 <img width="1919" height="919" alt="Ls_MotionVectors_v01" src="https://github.com/user-attachments/assets/c6c31036-6acf-4e69-85d5-89653d9a7e79" />
 
-```c
+```js
 // 2D motion vector output in absolute pixels, lewis@lewissaunders.com July 2018
 // Paste this in an Inline Code VOP, enable "Expand Expressions in Code"
 // Connect a Bind set to "vel", type Vector, to the first input
