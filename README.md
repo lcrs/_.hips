@@ -227,6 +227,11 @@ https://github.com/user-attachments/assets/3f226109-32f6-4381-84f9-b048bd06978c
 
 https://github.com/user-attachments/assets/f1af625d-02dd-4921-adcc-a04b86c6db06
 
+#### [Ls_Shadowgeo_v01.hiplc](./Ls_Shadowgeo_v01.hiplc)
+Faking shadows using geometry raycast away from a point light source.
+
+<img width="1916" height="917" alt="Ls_Shadowgeo_v01" src="https://github.com/user-attachments/assets/0896a152-d2af-46fa-9aac-931ce4e39ffe" />
+
 #### [Ls_SquashSomePrims_v01.hiplc](./Ls_SquashSomePrims_v01.hiplc)
 VEX snippet to squash some primitives and accumulate the offset to maintain the spacing of the others.
 
