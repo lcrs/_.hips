@@ -79,6 +79,11 @@ Velocity extrapolation bug in DOPs. When velocity sampling is set to streak, vel
 
 https://github.com/user-attachments/assets/fa8a503c-6572-434b-8d7a-85df603bcb7a
 
+#### [Ls_GlancingReflectionBug_v01.hipnc](./Ls_GlancingReflectionBug_v01.hipnc)
+Demo of a strange bent reflection bug. It can be fixed by reversing the normals or vertex order, or by rotating the grid:
+
+<img width="1919" height="919" alt="Ls_GlancingReflectionBug_v01" src="https://github.com/user-attachments/assets/e80e9e22-db71-47ed-8439-32006cb22361" />
+
 #### [Ls_HairgenFromLines_v03.hiplc](./Ls_HairgenFromLines_v03.hiplc)
 Using hairgen to create geo at render time from guide hairs which are just SOPs lines, with random variation done inside the hairgen:
 
