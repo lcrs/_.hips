@@ -61,7 +61,7 @@ There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (whi
 <img width="1920" height="1080" alt="Ls_Cop3LUTfromImage_v01" src="https://github.com/user-attachments/assets/5df6ecc2-5160-4cb2-946d-09308966cc55" />
 
 #### [Ls_Cop3MatrixBinding_v01.hipnc](./Ls_Cop3MatrixBinding_v01.hipnc)
-Binding a `3@matrix` attribute into OpenCL using `float9`, then loading it with `mat3load().`. Admittedly it's confusing you can't access the mat3 as an array of 9 floats since it's actually an array of fpreal3s (each of which is 4 floats wide even more confusingly):
+Binding a `3@matrix` attribute into OpenCL using `float9`, then loading it with `mat3load()`. Admittedly it's confusing you can't access the mat3 as an array of 9 floats since it's actually an array of fpreal3s (each of which is 4 floats wide even more confusingly):
 
 <img width="1490" height="640" alt="copmatrix" src="https://github.com/user-attachments/assets/131eeec3-e7bf-4490-ac45-73cc366732a4" />
 
