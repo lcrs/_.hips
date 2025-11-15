@@ -154,7 +154,7 @@ if(sdf > 0.0) {
 }
 ```
 
-#### [Ls_MatrixFromChart_v01b.hipnc](./Ls_MatrixFromChart_v01b.hipnc)
+#### [Ls_MatrixFromChart_v01c.hipnc](./Ls_MatrixFromChart_v01c.hipnc)
 Extracts a best-fit 3x3 matrix from two Macbeth chart images similarly to mmColorTarget using everyone's favourite, the Linear Solver SOP:
 
 <img width="2560" height="1487" alt="Ls_MatrixFromChart_v01" src="https://github.com/user-attachments/assets/1a30e0f6-d35c-478f-86aa-d5a005937645" />
