@@ -203,6 +203,11 @@ https://github.com/user-attachments/assets/3f226109-32f6-4381-84f9-b048bd06978c
 
 https://github.com/user-attachments/assets/f1af625d-02dd-4921-adcc-a04b86c6db06
 
+#### [Ls_SquashSomePrims_v01.hiplc](./Ls_SquashSomePrims_v01.hiplc)
+VEX snippet to reduce the size of certain primitives and accumulate the offset to maintain the spacing of the remaining prims.
+
+<img width="1916" height="920" alt="Ls_SquashSomePrims_v01" src="https://github.com/user-attachments/assets/80fbca4b-4b92-4e49-9cfe-4cbc69516f7c" />
+
 #### [Ls_Squish_v01.hipnc](./Ls_Squish_v01.hipnc)
 Cheap trick to make meshes squish away from each other when in contact without any simulation:
 
