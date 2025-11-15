@@ -36,7 +36,7 @@ There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (whi
 <img width="1920" height="1080" alt="Ls_Cop3LUTfromImage_v01" src="https://github.com/user-attachments/assets/5df6ecc2-5160-4cb2-946d-09308966cc55" />
 
 #### [Ls_Cop3MatrixBinding_v01.hipnc](./Ls_Cop3MatrixBinding_v01.hipnc)
-Demo of binding a `3@matrix` attribute into OpenCL using `float9`. Admittedly confusing that you can't access the mat3 as an array of 9 floats since it's actually an array of fpreal3s (each of which is 4 floats wide even more confusingly):
+Demo of binding a 3@matrix attribute into OpenCL using float9. Admittedly confusing that you can't access the mat3 as an array of 9 floats since it's actually an array of fpreal3s (each of which is 4 floats wide even more confusingly):
 
 <img width="1490" height="640" alt="copmatrix" src="https://github.com/user-attachments/assets/131eeec3-e7bf-4490-ac45-73cc366732a4" />
 
@@ -49,6 +49,11 @@ The Prefix Sum COP makes summed area tables that let you do box filters of any s
 The Smooth Fill COP can be used for seamless edge blending, useful for tiled textures:
 
 <img width="1918" height="916" alt="Ls_Cop3Tile_v01" src="https://github.com/user-attachments/assets/c5c2381f-b26a-464f-abcb-70ab86c89f56" />
+
+#### [Ls_Cop3UVProject.hipnc](./Ls_Cop3UVProject.hipnc)
+Camera projection in COPs. Recreating the projection itself in COPs is complicated, it's easier to project UVs from camera as a uv2 attrib in SOPs, then bake from uv2 to uv:
+
+<img width="2672" height="1629" alt="Ls_Cop3UVProject" src="https://github.com/user-attachments/assets/f69d6bc8-82cb-40cb-9154-f8550dec79d8" />
 
 #### [Ls_CurveExtrapolate.hipnc](./Ls_CurveExtrapolate.hipnc)
 Extrapolating a curve using taylor polynomials. You can enable gradient3 and gradient4 as well but it gets a bit spicy:
