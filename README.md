@@ -50,6 +50,11 @@ The Smooth Fill COP can be used for seamless edge blending, useful for tiled tex
 
 <img width="1918" height="916" alt="Ls_Cop3Tile_v01" src="https://github.com/user-attachments/assets/c5c2381f-b26a-464f-abcb-70ab86c89f56" />
 
+#### [Ls_CurveExtrapolate.hipnc](./Ls_CurveExtrapolate.hipnc)
+Extrapolating a curve using taylor polynomials. You can enable gradient3 and gradient4 as well but it gets a bit spicy:
+
+https://github.com/user-attachments/assets/d58d709d-7c4b-41ca-9edc-0990bd77d081
+
 #### [Ls_KarmaMandelbulb](./Ls_KarmaMandelbulb)
 The HDK comes with a Karma procedural that renders a mandelbulb in VEX without having to create any geometry (sadly it crashes as soon as you change any of the parameters in 20.5.361 unless you switch the renderer from Karma CPU to something else and then back again):
 
