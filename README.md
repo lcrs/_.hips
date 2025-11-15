@@ -213,6 +213,11 @@ Creates a smooth terrain from contour lines using thin plate spline interpolatio
 
 <img width="2560" height="1600" alt="Ls_TerrainFromContours_v01" src="https://github.com/user-attachments/assets/765c99a6-6ef5-4f7a-ac75-bfa5d35cffa6" />
 
+#### [Ls_TiledVDBRender_v01.hipnc](./Ls_TiledVDBRender_v01.hipnc)
+Attempting to render multiple VDB volumes without edge artifacts:
+
+<img width="1919" height="916" alt="Ls_TiledVDBRender_v01" src="https://github.com/user-attachments/assets/e1e8e396-8dd3-4b1a-a11d-5260b3e6d0c2" />
+
 #### [Ls_TurbulenceQ_v01.hipnc](./Ls_TurbulenceQ_v01.hipnc)
 Extracts the Q-criterion isosurface beloved by aerospace CFD people from a smoke or pyro sim (it's the difference between the squared frobenius norms of the symmetric and anti-symmetric parts of the velocity gradient tensor, see https://www.m4-engineering.com/q-criterion-for-vortex-visualization):
 
