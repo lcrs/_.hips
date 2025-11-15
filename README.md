@@ -272,6 +272,14 @@ Using OpenCL to multiply the density of one volume by another, like using VDB Co
 
 <img width="1919" height="919" alt="Ls_OpenCLMaskVDB" src="https://github.com/user-attachments/assets/6883906a-7aa3-4cfa-9c0d-8062cc762581" />
 
+```js
+@KERNEL
+{
+    float bias = @mask.worldSample(@density.pos);
+    @density.set(lerp(0.0, @density, bias));
+}
+```
+
 #### [Ls_PackedGeoRayCull.hipnc](./Ls_PackedGeoRayCull.hipnc)
 Culls packed prims based on the Ray SOP. The sphere rays out in every direction, records hitprim from the packed geo, then `findattribvalcount()` checks if each piece of packed geo had a hit recorded:
 
@@ -306,6 +314,21 @@ Faking shadows using geometry raycast away from a point light source.
 VEX snippet to squash some primitives and accumulate the offset to maintain the spacing of the others.
 
 <img width="1916" height="920" alt="Ls_SquashSomePrims_v01" src="https://github.com/user-attachments/assets/80fbca4b-4b92-4e49-9cfe-4cbc69516f7c" />
+
+```js
+int squashcount = 0;
+for(int i = 0; i < nprimitives(0); i++) {
+    if(inprimgroup(0, "squash", i-1)) {
+        squashcount++;
+    }
+    foreach(int p; primpoints(0, i)) {
+        vector oldpos = point(0, 'P', p);
+        vector newpos = oldpos;
+        newpos.x -= squashcount * chf('squashfactor');
+        setpointattrib(0, 'P', p, newpos);
+    }
+}
+```
 
 #### [Ls_Squish_v01.hipnc](./Ls_Squish_v01.hipnc)
 Cheap trick to make meshes squish away from each other when in contact without any simulation:
