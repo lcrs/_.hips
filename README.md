@@ -272,7 +272,8 @@ Using tag visualizers in dummy geo objects parented under the camera. This allow
 
 <img width="1917" height="916" alt="Ls_ViewportText_v01" src="https://github.com/user-attachments/assets/95f28272-254b-4536-8f5f-df1d04f544d9" />
 
- 
+&nbsp;
+&nbsp;
 
 Everything else in here I have zero memory of don't @ me 🤍 lewis.saunders@gmail.com
 
