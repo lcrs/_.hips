@@ -1,10 +1,10 @@
 #### [Ls_AF1TransonicRegime_v01.hipnc](./Ls_AF1TransonicRegime_v01.hipnc)
-Aligning arrows to follow a pyro sim... ignore the shoe (loud video warning):
+Aligning arrows to follow a pyro sim... ignore the shoe (loud video):
 
 https://github.com/user-attachments/assets/eee24241-f285-408a-b6ff-8bee8f861d8c
 
 #### [Ls_AncientScrolls_v01.hiplc](./Ls_AncientScrolls_v01.hiplc)
-Unwrapping layers of papyrus from CT scans of the Herculaneum scrolls - could see the crosshatching of the reeds woven together but no ink or writing (loud video warning):
+Unwrapping layers of papyrus from CT scans of the Herculaneum scrolls - could see the crosshatching of the reeds woven together but no ink or writing (loud video):
 
 https://github.com/user-attachments/assets/db59fdab-e19f-42d4-babc-3f1de05bb510
 
@@ -19,7 +19,7 @@ Using the vague concept of a "volumetric tangent space" for blendshaping so it d
 https://github.com/user-attachments/assets/3daf9345-0d87-436f-a49a-33efca1fd062
 
 #### [Ls_Caustics_v01.hiplc](./Ls_Caustics_v01.hiplc)
-Caustics are fun to play with in mantra, just set photon target on a caustic light to the transparent object and add a zero to the default photon count. Then constantly hit render in the IPR to update the map:
+Mantra rendered caustics in a quite different way to how Karma now does and they can still be fun to play with... just set photon target on a caustic light to the transparent object and add a zero to the default photon count, then constantly hit render in the IPR to update the map:
 
 <img width="1293" height="717" alt="Ls_Caustics_v01" src="https://github.com/user-attachments/assets/9d99f77c-3bf9-4ee0-831d-fdb37678a0c5" />
 
@@ -115,22 +115,22 @@ The Smooth Fill COP can be used for seamless edge blending, useful for tiled tex
 <img width="1918" height="916" alt="Ls_Cop3Tile_v01" src="https://github.com/user-attachments/assets/c5c2381f-b26a-464f-abcb-70ab86c89f56" />
 
 #### [Ls_Cop3UVProject.hipnc](./Ls_Cop3UVProject.hipnc)
-Camera projection in COPs. Recreating the projection itself in COPs is complicated, it's easier to project UVs from camera as a uv2 attrib in SOPs, then bake from uv2 to uv:
+Camera projection in COPs by simply projecting UVs from camera as a uv2 attrib in SOPs, then baking from uv2 to uv:
 
 <img width="2672" height="1629" alt="Ls_Cop3UVProject" src="https://github.com/user-attachments/assets/f69d6bc8-82cb-40cb-9154-f8550dec79d8" />
 
 #### [Ls_CurveExtrapolate.hipnc](./Ls_CurveExtrapolate.hipnc)
-Extrapolating a curve using taylor polynomials. You can enable gradient3 and gradient4 as well but it gets a bit spicy:
+Extrapolating a curve using Taylor polynomials (can enable gradient3 and gradient4 as well but it gets a bit spicy):
 
 https://github.com/user-attachments/assets/d58d709d-7c4b-41ca-9edc-0990bd77d081
 
 #### [Ls_DopsVolumeStreak_v01.hipnc](./Ls_DopsVolumeStreak_v01.hipnc)
-Velocity extrapolation weirdness in DOPs. When velocity sampling is set to streak, velocity at the border is reflected back into the system. Changing velocity sampling to corner keeps it stable, as does turning closed boundaries on (but changes the look a lot). Bizarrely it also stays stable if you enable OpenCL on Gas Enforce Boundary DOP:
+Velocity extrapolation weirdness in DOPs... when velocity sampling is set to streak, velocity at the border is reflected back into the system. Changing velocity sampling to corner keeps it stable, as does turning closed boundaries on (but changes the look a lot). Bizarrely it also stays stable if you enable OpenCL on Gas Enforce Boundary DOP:
 
 https://github.com/user-attachments/assets/fa8a503c-6572-434b-8d7a-85df603bcb7a
 
 #### [Ls_GeoTangentSpaceTransfer_v02.hipnc](./Ls_GeoTangentSpaceTransfer_v02.hipnc)
-Super simply easily memorable way to transfer a sculpt or other shape change from a rest pose to a different pose by storing the difference in tangent space, simply using dot products with N/tangentu/tangentv and no need to remember matrix ordering (may not match the MikkT standard though):
+Easily memorable way to transfer a sculpt or other shape change from a rest pose to a different pose by storing the difference in tangent space, simply using dot products with N/tangentu/tangentv without needing to remember which bit is which in a TBN matrix (may not match the MikkT standard though):
 
 <img width="2560" height="1467" alt="Ls_GeoTangentSpaceTransfer_v02" src="https://github.com/user-attachments/assets/f5c89c54-3096-4ed1-89c7-4318537de982" />
 
@@ -140,7 +140,7 @@ Splits a mesh into low and high frequency parts, then uses the tangent space tra
 https://github.com/user-attachments/assets/46b41c99-ad94-442c-af1f-75a94465d497
 
 #### [Ls_GlancingReflectionBug_v01.hipnc](./Ls_GlancingReflectionBug_v01.hipnc)
-Demo of a strange bent reflection bug. It can be fixed by reversing the normals or vertex order, or by rotating the grid:
+Demo of strangely warped reflections at close-to-tangent ray incidence - goes away in Karma XPU or when changing vertex order/normal direction:
 
 <img width="1919" height="919" alt="Ls_GlancingReflectionBug_v01" src="https://github.com/user-attachments/assets/e80e9e22-db71-47ed-8439-32006cb22361" />
 
@@ -160,7 +160,7 @@ You can sorta render a sunset using a uniform volume on a sphere as big as the e
 <img width="1985" height="857" alt="Ls_KarmaSunset_v01" src="https://github.com/user-attachments/assets/34b49392-95c7-40c3-aed7-08908b59b9fe" />
 
 #### [Ls_LOPsFrustrumClipMaybe_v01.hipnc](./Ls_LOPsFrustrumClipMaybe_v01.hipnc)
-Pruning primitives outside of an SDF VDB in LOPs. Sample your SOP VDB at the center of each prim in LOPs to check if it's outside:
+Pruning primitives outside of an animated camera's accumulated viewing volume by sampling a SOPs VDB at the center of each prim in LOPs to check if it's outside:
 
 <img width="2672" height="1629" alt="Ls_LOPsFrustrumClipMaybe_v01" src="https://github.com/user-attachments/assets/51e6005d-0eb4-4277-b875-925b3015c006" />
 
@@ -178,17 +178,17 @@ Extracts a best-fit 3x3 matrix from two Macbeth chart images similarly to mmColo
 <img width="2560" height="1487" alt="Ls_MatrixFromChart_v01" src="https://github.com/user-attachments/assets/1a30e0f6-d35c-478f-86aa-d5a005937645" />
 
 #### [Ls_MatrixInterp_v01.hiplc](./Ls_MatrixInterp_v01.hiplc)
-Interpolating between two matrix attributes using `slerp()`:
+Interpolating between two matrices using `slerp()` so the transform stays rigid and doesn't introduce weird shears like interpolating the matrix values directly does:
 
 <img width="1919" height="919" alt="Ls_MatrixInterp_v01" src="https://github.com/user-attachments/assets/e44d1f4b-f240-4d20-8ebe-d88a2ff799f8" />
 
 #### [Ls_OldBubbleSim_v07.hiplc](./Ls_OldBubbleSim_v07.hiplc)
-Soap bubble simulated as 2D smoke with "single rest" advection and a noise texture mapped on in COPs, rendered with Arnold's thin film shader... the only real trick is to resize the rest field up 3x before remapping the texture onto it, which looks much smoother and more detailed, as if the whole thing was done with 3x3 antialiasing: 
+Soap bubble simulated as 2D smoke with a noise texture mapped to the advected "single rest" field in COPs, rendered with Arnold's thin film shader - doing that keeps far more detail than trying to advect the noise texture directly, and resizing the rest field up 3x before mapping makes it look as if the whole thing was done with an extra 3x3 worth of antialiasing: 
 
 https://github.com/user-attachments/assets/467113a6-0022-4068-886b-ddd9e7b79387
 
 #### [Ls_PackedGeoRayCull.hipnc](./Ls_PackedGeoRayCull.hipnc)
-Culls packed prims using visibility rays - it may seem surprising that the Ray SOP can trace against packed prims since most SOPs only treat them as a single point but thinking of them as render time instances hints that it should work... the rays record hitprim from the packed geo, then `findattribvalcount()` checks if each piece of packed geo had a hit recorded:
+Keeps only packed prims that are visible from a point by casting rays - it may seem surprising that the Ray SOP can trace against packed prims since most SOPs only treat them as a single point, but thinking of them as render time instances hints that it should work and be fast... the rays record hitprim from the packed geo, then `findattribvalcount()` checks if each piece had a hit recorded:
 
 <img width="2560" height="1600" alt="Ls_PackedGeoRayCull" src="https://github.com/user-attachments/assets/434751f3-c2ab-4e95-8b93-878eff904c09" />
 
@@ -263,7 +263,7 @@ Builds a geometry network with friend/following relations from a social media gr
 https://github.com/user-attachments/assets/28b10797-facb-440a-a38a-d5f20abe4c73
 
 #### [Ls_ViewportCameraGeoSync.hipnc](./Ls_ViewportCameraGeoSync.hipnc)
-Strange viewport bug with camera syncing. The capy and camera are in sync when hitting play, but when scrubbing the timeline he's all over the shop:
+Showing how deceptive the viewport can be when working with fast-moving cameras - the capy and camera are in sync when hitting play, but when scrubbing the timeline he's all over the shop:
 
 https://github.com/user-attachments/assets/18be003d-dcb7-4d79-834d-a9c52088a267
 
@@ -271,6 +271,8 @@ https://github.com/user-attachments/assets/18be003d-dcb7-4d79-834d-a9c52088a267
 Using tag visualizers in dummy geo objects parented under the camera. This allows color control, and is easy to move around rather than being stuck in the corner.
 
 <img width="1917" height="916" alt="Ls_ViewportText_v01" src="https://github.com/user-attachments/assets/95f28272-254b-4536-8f5f-df1d04f544d9" />
+
+
 
 Everything else in here I have zero memory of don't @ me 🤍 lewis.saunders@gmail.com
 
