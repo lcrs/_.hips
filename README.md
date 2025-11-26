@@ -58,6 +58,11 @@ inline void atomic_add_f(volatile __global float* addr, const float val) {
 }
 ```
 
+#### [Ls_Cop3GPUparticles_v01.hipnc](./Ls_Cop3GPUparticles_v01.hipnc)
+Crude demo of 6 million particles simulating and rendering at 60fps all on the GPU in COPs, using a simulate block with position and velocity buffers and the above atomic add trick:
+
+https://github.com/user-attachments/assets/78fb20ec-4bd4-4173-bb92-8214f00ef912
+
 #### [Ls_Cop3LUTfromImage_v02](./Ls_Cop3LUTfromImage_v02)
 There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (which is CPU-only) but if you encode one in an image you can do a reasonable job with OpenCL:
 
