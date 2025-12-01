@@ -63,6 +63,11 @@ Crude demo of 6 million particles simulating and rendering at 60fps all on the G
 
 https://github.com/user-attachments/assets/78fb20ec-4bd4-4173-bb92-8214f00ef912
 
+#### [Ls_Cop3GPUparticles_v03.hipnc](./Ls_Cop3GPUparticles_v03.hipnc)
+Similar to above but also cheaply rasterizing the particles onto an image layer inside the simulate block then using the derivatives of that image to get a force towards the local concentration of particles, like hard-to-control but very fast flocking or the particle/grid transfer that forms the basis of FLIP:
+
+https://github.com/user-attachments/assets/972a29c1-8473-4e1b-b661-3bfce6ea87cf
+
 #### [Ls_Cop3LUTfromImage_v02](./Ls_Cop3LUTfromImage_v02)
 There's no way to apply a 3D LUT in new-style COPs apart from the OCIO node (which is CPU-only) but if you encode one in an image you can do a reasonable job with OpenCL:
 
