@@ -154,6 +154,9 @@ Demo of strangely warped reflections at close-to-tangent ray incidence - goes aw
 
 <img width="1919" height="919" alt="Ls_GlancingReflectionBug_v01" src="https://github.com/user-attachments/assets/e80e9e22-db71-47ed-8439-32006cb22361" />
 
+#### [Ls_houCLfuncs.py](./Ls_houCLfuncs.py)
+Generates a list of OpenCL functions in Houdini's include folder using the cpp preprocessor and https://ctags.io/ - output looks like [Ls_houCLfuncs.cl](./Ls_houCLfuncs.cl)
+
 #### [Ls_KarmaMandelbulb](./Ls_KarmaMandelbulb)
 The HDK comes with a Karma procedural that renders a mandelbulb in VEX without having to create any geometry (sadly it crashes as soon as you change any of the parameters in 20.5.361 unless you switch the renderer from Karma CPU to something else and then back again):
 
